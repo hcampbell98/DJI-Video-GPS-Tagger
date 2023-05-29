@@ -60,6 +60,6 @@ python tagger.py --video input_video.mp4 --srt input_metadata.srt --framerate 2 
 
 In this example, the script will extract metadata from the `input_metadata.srt` file and embed it into the frames of the `input_video.mp4` video. The frames will be saved in the `output_frames` directory, and the metadata will be written using the `metadata.jpg` file.
 
-The `metadata.jpg` file should be a photo you have taken with the device that captured the video.
+The `metadata.jpg` file should be a photo you have taken with the device that captured the video. This allows the tagged images to be uploaded to DroneDeploy without issue.
 
 Feel free to adjust the parameters according to your specific requirements.
