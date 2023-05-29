@@ -25,10 +25,10 @@ This Python script is designed to extract metadata from an SRT file and write it
 6. Run the following command to execute the script:
 
     ```shell
-    python script_name.py --video <path_to_video> --srt <path_to_srt> [--framerate <framerate>] [--framerate-video <framerate_video>] [--frames_dir <frames_dir>] [--metadata-file <metadata_file>]
+    python tagger.py --video <path_to_video> --srt <path_to_srt> [--framerate <framerate>] [--framerate-video <framerate_video>] [--frames_dir <frames_dir>] [--metadata-file <metadata_file>]
     ```
 
-    Replace `script_name.py` with the actual name of the script file.
+    Replace `tagger.py` with the actual name of the script file.
 
     #### Parameters
 
@@ -55,7 +55,7 @@ This Python script is designed to extract metadata from an SRT file and write it
 Here is an example command to run the script:
 
 ```shell
-python video_frame_metadata_extraction.py --video input_video.mp4 --srt input_metadata.srt --framerate 2 --framerate-video 30 --frames_dir output_frames --metadata-file metadata.jpg
+python tagger.py --video input_video.mp4 --srt input_metadata.srt --framerate 2 --framerate-video 30 --frames_dir output_frames --metadata-file metadata.jpg
 ```
 
 In this example, the script will extract metadata from the `input_metadata.srt` file and embed it into the frames of the `input_video.mp4` video. The frames will be saved in the `output_frames` directory, and the metadata will be written using the `metadata.jpg` file.
