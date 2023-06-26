@@ -48,7 +48,7 @@ def split_video_into_frames(path_to_video, path_to_frames, framerate):
         # We use ffmpeg to do this
         # The command will be formatted as follows
         # ffmpeg -i <path_to_video> -r <framerate> <path_to_frames>/frame%04d.jpg
-        command = f"ffmpeg -hwaccel cuda -i {path_to_video} -r {framerate} {path_to_frames}/%04d.jpg"
+        command = f"ffmpeg -i {path_to_video} -r {framerate} {path_to_frames}/%04d.jpg"
 
         # We run the command
         os.system(command)
