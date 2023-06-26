@@ -70,8 +70,11 @@ def write_data_to_frame(path_to_frames, frame_data):
         # The command to write the data to the frame
         # We use exiftool to do this
         ts = datetime.strptime(data['timestamp'], "%Y-%m-%d %H:%M:%S.%f")
-        cmd = f"exiftool {path_to_frames}/{index+1:04d}.jpg -overwrite_original -GPSLatitude={float(data[',latitude'])} -GPSLongitude={float(data['longitude'])} -GPSAltitude={float(data['rel_alt'].split(' ')[0])} -GPSLatitudeRef=N -GPSLongitudeRef=W -GPSAltitudeRef=0 -DateTimeOriginal={ts.strftime('%Y-%m-%d %H:%M:%S.%f')} -ISO = {data['iso']} -ShutterSpeedValue={data['shutter']} -FNumber={data['fnum']} -ExposureCompensation={data['ev']} -ColorTemperature={data['ct']} -FocalLength={data['focal_len']}"
-        os.system(cmd)
+        cmd = f"exiftool {path_to_frames}/{index+1:04d}.jpg -overwrite_original -GPSLatitude={float(data[',latitude'])} -GPSLongitude={float(data['longitude'])} -GPSAltitude={float(data['rel_alt'].split(' ')[0])} -GPSLatitudeRef=N -GPSLongitudeRef=W -GPSAltitudeRef=0 -DateTimeOriginal=\"{ts.strftime('%Y:%m:%d %H:%M:%S.%f')}\" -ShutterSpeedValue={data['shutter']} -FNumber={data['fnum']} -ExposureCompensation={data['ev']} -ColorTemperature={data['ct']} -FocalLength={data['focal_len']}"
+        print("Processed frame", index+1, "of", len(files))
+        
+        #Run the command but don't print the output. Needs to work on Windows and Linux
+        os.system(cmd + " > /dev/null 2>&1" if os.name == 'posix' else cmd + " > nul 2>&1")
 
 
 if __name__ == "__main__":
