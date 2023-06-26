@@ -7,3 +7,5 @@ python tagger_gui.py
 ```
 
 This directory should contain a copy of the tagger.py script to function.
+
+![example](https://i.hcampbell.dev/ws9reh8efe.png)
