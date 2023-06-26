@@ -1,0 +1,119 @@
+* {
+    color: white;
+}
+
+html,
+body {
+    background-color: #111;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.dropzone {
+    box-sizing: border-box;
+    width: 300px;
+    height: 200px;
+    background-color: #1a1a1a;
+
+    border: 2px dashed #444;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.dropzone-dragover {
+    border-color: #aaa;
+}
+
+.dropzone-file {
+}
+
+.framerate-selector {
+    box-sizing: border-box;
+
+    height: 50px;
+
+    & input {
+        box-sizing: border-box;
+        height: 100%;
+        font-size: 20px;
+
+        /* Disable border and outline defaults */
+        border: none;
+        outline: none;
+
+        background-color: #1a1a1a;
+        border: 2px dashed #444;
+        border-radius: 5px;
+
+        text-align: center;
+    }
+
+    & label {
+        text-align: center;
+    }
+
+    /* Disable arrows */
+    & input {
+        -moz-appearance: textfield;
+    }
+    & input::-webkit-outer-spin-button,
+    & input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+}
+
+form {
+    width: 600px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+
+    > *:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .submit {
+        box-sizing: border-box;
+        height: 50px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & input {
+            width: 100%;
+            height: 100%;
+
+            /* Disable border and outline defaults */
+            outline: none;
+            border: none;
+
+            background-color: #1a1a1a;
+            border: 2px dashed #444;
+            border-radius: 5px;
+
+            cursor: pointer;
+        }
+    }
+}
+
+.output {
+    margin-top: 20px;
+    padding: 5px;
+    box-sizing: border-box;
+
+    width: 600px;
+    height: 400px;
+
+    background-color: #1a1a1a;
+    border: 2px dashed #444;
+    border-radius: 5px;
+
+    font-size: 10px;
+
+    overflow: auto;
+}

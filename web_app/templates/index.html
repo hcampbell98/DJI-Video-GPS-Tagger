@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Video Tagger</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+        <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    </head>
+    <body>
+        <form onsubmit="formSubmit(this); return false">
+            <!-- Video File Selector -->
+            <div class="video-file-selector dropzone" data-name="Video Selector"></div>
+            <!-- SRT File Selector -->
+            <div class="srt-file-selector dropzone" data-name="SRT Selector"></div>
+
+            <!-- Framerate Selector -->
+            <div class="framerate-selector">
+                <input type="number" name="framerate" min="1" max="10" value="2" id="output-framerate" />
+                <label for="output-framerate">Output Framerate</label>
+            </div>
+            <!-- Video Framerate Selector -->
+            <div class="framerate-selector">
+                <input type="number" name="video-framerate" min="1" max="240" value="30" id="video-framerate" />
+                <label for="video-framerate">Video Framerate</label>
+            </div>
+
+            <!-- Submit -->
+            <div class="submit">
+                <input type="submit" value="Submit" />
+            </div>
+        </form>
+        <div class="output"></div>
+    </body>
+</html>

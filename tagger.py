@@ -80,7 +80,7 @@ if __name__ == "__main__":
     parser.add_argument('--srt', type=str, required=True, help='Path to SRT file')
     parser.add_argument('--framerate', type=int, default=1, help='Framerate to output frames at')
     parser.add_argument('--framerate-video', type=int, default=30, help='Framerate of the input video')
-    parser.add_argument('--frames_dir', type=str, default='frames/', help='Path to output frames to')
+    parser.add_argument('--frames-dir', type=str, default='frames/', help='Path to output frames to')
     parser.add_argument('--metadata-file', type=str, default='metadata.jpg', help='Path to metadata image')
 
     args = parser.parse_args()
