@@ -137,4 +137,8 @@ thread = threading.Thread(target=cleanup_thread)
 thread.start()
 
 if __name__ == '__main__':
+    #Check if the uploads folder exists
+    if not os.path.isdir(os.path.join(os.getcwd(), 'uploads')):
+        os.mkdir(os.path.join(os.getcwd(), 'uploads'))
+
     app.run()
