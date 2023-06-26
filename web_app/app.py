@@ -141,4 +141,4 @@ if __name__ == '__main__':
     if not os.path.isdir(os.path.join(os.getcwd(), 'uploads')):
         os.mkdir(os.path.join(os.getcwd(), 'uploads'))
 
-    app.run()
+    app.run(host='0.0.0.0', port=5000)
