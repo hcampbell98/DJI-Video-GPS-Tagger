@@ -5,3 +5,5 @@ This is a web app wrapper for the tagger.py script. Files are networked from the
 ```shell
 python tagger_gui.py
 ```
+
+This directory should contain a copy of the tagger.py script to function.
