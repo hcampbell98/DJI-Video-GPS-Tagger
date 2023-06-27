@@ -13,8 +13,11 @@ last_task_update = 0
 task_queue = []
 
 #tasks[id] = json.dumps({'status': status})
-def update_task(id, status):
-    tasks[id] = json.dumps({'status': status})
+def update_task(id, status, overwrite=False):
+    tasks[id] = json.dumps({
+        'status': status,
+        'overwrite': overwrite
+    })
 
 @app.route('/api/process', methods=['POST'])
 def process():
@@ -67,14 +70,12 @@ def process_task(data, id):
 
     #Format command
     command = 'python3 ' + os.path.join(os.getcwd(), "tagger.py") + ' --video ' + video_path + ' --srt ' + srt_path + ' --framerate ' + output_framerate + ' --framerate-video ' + video_framerate + ' --frames-dir ' + frames_path
-    
-    print(command)
 
     update_task(id, 'Processing')
-    #Run command, and log output with update_task
-    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    for line in process.stdout:
-        update_task(id, line.decode('utf-8').rstrip())
+    #Run command, and log output while it's running
+    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
+    for x, line in enumerate(process.stdout):
+        update_task(id, line.strip())
 
     #Zip the frames folder
     update_task(id, 'Compressing frames')

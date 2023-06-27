@@ -73,8 +73,16 @@ class Logger {
         this.logElement = element;
     }
 
-    log(message) {
-        this.logElement.innerHTML = this.logElement.innerHTML + message + "<br>";
+    log(message, overwrite = false) {
+        if (!overwrite) {
+            this.logElement.innerHTML = this.logElement.innerHTML + message + "<br>";
+        } else {
+            //Overwrite last line
+            let lines = this.logElement.innerHTML.split("<br>");
+            lines[lines.length - 2] = message;
+            this.logElement.innerHTML = lines.join("<br>");
+        }
+
         //Scroll to bottom
         this.logElement.scrollTop = this.logElement.scrollHeight;
     }
@@ -100,11 +108,13 @@ statusHandler = function (id) {
                 //Start download but don't leave the page
                 let downloadLink = document.createElement("a");
                 downloadLink.href = "/api/download/" + id;
-                downloadLink.download = "output.zip";
+                downloadLink.download = "frames.zip";
                 downloadLink.click();
+
+                logger.log("Downloading frames.zip");
             }
 
-            logger.log(response.status);
+            logger.log(response.status, response.overwrite);
         }
     };
 };
@@ -142,7 +152,7 @@ formSubmit = function (form) {
     xhr.upload.onprogress = function (event) {
         if (event.lengthComputable) {
             let percentComplete = event.loaded / event.total;
-            logger.log("Uploaded " + Math.round(percentComplete * 100) + "%");
+            logger.log("Uploaded " + Math.round(percentComplete * 100) + "%", true);
         }
     };
 
